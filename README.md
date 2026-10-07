@@ -70,12 +70,12 @@ Todas são de leitura.
 
 ## Revogar o acesso
 
-- No Claude Code, rode `/mcp`, escolha o servidor `alparmais` e limpe a autenticação (ou remova o conector com `claude mcp remove alparmais`). Para desinstalar o plugin: `/plugin uninstall alparmais@alparmais`.
-- Para encerrar a autorização também no lado do Alpar+, peça à pessoa que administra o sistema no seu escritório para revogar a sessão do conector.
+- No Alpar+, em **Meu Espaço > Conexões com o Claude**, clique em **Revogar** na conexão desejada. O administrador do escritório também pode revogar em **Configurações**.
+- No Claude Code, você pode ainda rodar `/mcp` e limpar a autenticação do servidor `alparmais`, ou remover o conector com `claude mcp remove alparmais`. Para desinstalar o plugin: `/plugin uninstall alparmais@alparmais`.
 
 ## Suporte
 
-Dúvidas e problemas: abra uma *issue* neste repositório (sem colocar dados de clientes) ou fale com o time responsável pelo Alpar+ no seu escritório.
+Fale com o administrador do Alpar+ do seu escritório. Problemas do plugin podem ser abertos nas issues deste repositório (sem colocar dados de clientes).
 
 ## Licença
 

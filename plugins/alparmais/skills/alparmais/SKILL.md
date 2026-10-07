@@ -10,7 +10,7 @@ O Alpar+ é o sistema de gestão do escritório contábil: atendimento, operaç�
 ## Regras que valem sempre
 
 1. Nunca invente dado. Se a consulta não devolveu a informação, diga que não encontrou e sugira como buscar de outro jeito.
-2. Cite a fonte em toda resposta com dado do sistema, por exemplo "Fonte: Alpar+, tabela empresas" ou "Fonte: Alpar+, manual, seção Obrigações".
+2. Cite a fonte em toda resposta com dado do sistema, por exemplo "Fonte: Alpar+, cadastro de empresas" ou "Fonte: Alpar+, manual, seção Obrigações".
 3. Nunca peça senha, token ou código de acesso no chat. O login é feito pelo navegador, na primeira vez que uma ferramenta é usada. Se a pessoa tentar colar uma senha, recuse e explique isso.
 4. O Claude só enxerga o que a pessoa logada enxerga no Alpar+. Se uma tabela ou dado vier negado ou vazio por permissão, avise e não tente contornar.
 5. Tudo é somente leitura. Este conector não altera nada no Alpar+. Se a pessoa pedir para criar, editar ou dar baixa, explique que isso é feito direto no sistema.
@@ -31,19 +31,19 @@ O Alpar+ é o sistema de gestão do escritório contábil: atendimento, operaç�
 ## Como trabalhar
 
 1. Pergunta sobre como o sistema funciona: use `ler_manual` com a `secao` mais provável (por exemplo `obrigacoes`, `conversas`, `cadastros`, `RH`, `monitoramento`) e responda com base no texto.
-2. Pergunta sobre dados: chame `resumo_do_sistema` uma vez, depois `listar_tabelas` e `colunas_da_tabela` antes de escrever o `SELECT`, para não errar nome de campo. Sempre use `LIMIT` e selecione só as colunas necessárias.
+2. Pergunta sobre dados: chame `resumo_do_sistema` uma vez e use `listar_tabelas` e `colunas_da_tabela` para descobrir a estrutura antes de consultar. Consulte só com `SELECT`, prefira as visões de empresa, obrigações e cobranças, use sempre `LIMIT` e selecione só as colunas necessárias.
 3. Se o resultado vier truncado, diga isso e refine a consulta (filtro, período, `COUNT`) em vez de apresentar como completo.
 4. Apresente o resultado em português, em tabela curta quando couber, com a fonte ao final.
 
 ## Exemplos de pedidos
 
-- "Quais empresas do regime Simples Nacional temos no Alpar+?" (`colunas_da_tabela` em `empresas`, depois `consultar_dados`)
+- "Quais empresas do regime Simples Nacional temos no Alpar+?"
 - "Resuma a empresa A0123." (comando `/alparmais:alparmais-empresa A0123`)
-- "Quais obrigações vencem esta semana e ainda estão pendentes?" (tabelas `obrigacao_tarefas` e `obrigacao_tipos`)
-- "Quantas conversas de atendimento chegaram ontem por WhatsApp?" (tabelas `atendimentos` e `mensagens`)
+- "Quais obrigações vencem esta semana e ainda estão pendentes?"
+- "Quantas conversas de atendimento chegaram ontem por WhatsApp?"
 - "Como funciona a baixa de uma obrigação no Alpar+?" (`ler_manual` com `obrigacoes`)
-- "Quais cobranças de honorários estão em aberto?" (tabelas `honorarios_contratos` e `honorarios_cobrancas`)
-- "Quem cuida da carteira da empresa A0123?" (tabelas `usuario_empresas` e `usuarios`)
+- "Quais cobranças de honorários estão em aberto?"
+- "Quem cuida da carteira da empresa A0123?"
 - "Quais módulos o Alpar+ tem?" (`resumo_do_sistema`)
 
 ## Se a conexão falhar
