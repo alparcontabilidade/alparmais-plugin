@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "alparmais": {
+      "type": "http",
+      "url": "https://alparmais.alparcontabilidade.com.br/mcp"
+    }
+  }
+}

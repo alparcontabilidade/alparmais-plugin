@@ -1,0 +1,15 @@
+{
+  "name": "alparmais",
+  "description": "Plugins do Claude Code para clientes e parceiros do Alpar+",
+  "owner": {
+    "name": "Alpar Contabilidade",
+    "url": "https://github.com/alparcontabilidade"
+  },
+  "plugins": [
+    {
+      "name": "alparmais",
+      "source": "./plugins/alparmais",
+      "description": "Conecta o Claude Code ao Alpar+ para consultar dados e o manual do sistema, com login pelo navegador (OAuth)"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "alparmais",
+  "displayName": "Alpar+",
+  "version": "0.1.0",
+  "description": "Conector do Alpar+ para o Claude Code: consulta dados e o manual do sistema, somente leitura, com login pelo navegador.",
+  "author": {
+    "name": "Alpar Contabilidade",
+    "url": "https://alparcontabilidade.com.br"
+  },
+  "homepage": "https://github.com/alparcontabilidade/alparmais-plugin",
+  "repository": "https://github.com/alparcontabilidade/alparmais-plugin",
+  "keywords": ["alparmais", "contabilidade", "mcp", "white-label"]
+}
