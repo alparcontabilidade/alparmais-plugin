@@ -36,34 +36,47 @@ O login usa OAuth 2.1: você entra no navegador e o Claude Code recebe apenas um
 
 ## O que o Claude passa a fazer
 
-- Responder perguntas sobre os seus dados do Alpar+ (empresas, carteiras, obrigações e entregas, atendimentos, honorários, cadastros).
+- Mostrar o seu dia: cards de hoje, atrasados e vencidos, e as conversas de atendimento que esperam resposta.
+- Montar a lista de prioridades de um setor (`/alparmais:alparmais-prioridades fiscal`), por empresa e responsável, com a ação de cada item.
+- Resumir uma empresa pelo código (`/alparmais:alparmais-empresa A0123`).
+- Listar as empresas e as obrigações da sua carteira.
 - Explicar como cada tela e rotina do Alpar+ funciona, lendo o manual do sistema.
-- Montar o resumo de uma empresa pelo código com o comando `/alparmais:alparmais-empresa A0123`.
-- Citar sempre a fonte ("Alpar+") e dizer quando não encontrou algo, sem inventar dados.
+- Citar sempre a fonte ("Alpar+"), repassar o recorte que o sistema aplicou e dizer quando não encontrou algo, sem inventar dados.
 
 Exemplos de pergunta:
 
-- "Quais empresas do Simples Nacional temos no Alpar+?"
-- "Quais obrigações vencem esta semana e ainda estão pendentes?"
+- "O que eu tenho para hoje?"
+- "Quais cards meus estão atrasados?"
+- "Monte a lista de prioridades do Fiscal."
+- "Quais obrigações de setembro ainda estão abertas na minha carteira?"
 - "Como funciona a baixa de uma obrigação?"
+
+Sobre os termos: **vencido** é o que passou do prazo legal, **atrasado** é o que passou do prazo interno do escritório.
 
 ### Ferramentas do conector
 
-Todas são de leitura.
+Todas são de leitura e já devolvem os dados recortados pelo que a sua conta pode ver. Setores aceitos: legalização, alicerce, estruturação, fiscal, contábil, dp, atendimento, financeiro, ti, comercial e taxas.
 
 | Ferramenta | O que faz |
 |---|---|
-| `resumo_do_sistema` | Resumo dos módulos, das tabelas principais e das regras de sigilo |
-| `listar_tabelas` | Lista as tabelas consultáveis |
-| `colunas_da_tabela` | Mostra as colunas de uma tabela |
-| `consultar_dados` | Executa uma consulta `SELECT` (até 500 linhas) |
-| `ler_manual` | Lê o manual do Alpar+, inteiro ou por seção |
+| `resumo_do_dia` | Panorama do dia: o que pede atenção agora |
+| `meus_cards` | Seus cards (abertos, vencidos, atrasados, de hoje, da semana) |
+| `cards_do_setor` | Cards de um setor, agrupados por responsável |
+| `pendencias_do_setor` | Pendências do setor (cards, obrigações e processos do Alicerce) com prioridade sugerida de 1 a 8 |
+| `minhas_empresas` | Empresas da sua carteira |
+| `empresa_resumo` | Resumo de uma empresa |
+| `minhas_conversas` | Conversas de atendimento |
+| `obrigacoes_da_carteira` | Obrigações da carteira, por competência |
+| `ler_manual` | Manual do Alpar+, inteiro ou por seção |
+| `resumo_do_sistema` | Resumo dos módulos e das regras de sigilo |
+
+Para quem tem a chave de SQL no Alpar+, ficam disponíveis também `consultar_dados`, `listar_tabelas` e `colunas_da_tabela`, para consultas livres de leitura.
 
 ## Privacidade
 
 - O Claude **só vê o que a pessoa logada vê no Alpar+**. As permissões, o recorte por equipe e o sigilo de RH do sistema continuam valendo.
 - O conector é **somente leitura**: não cria, não edita e não apaga nada.
-- Tabelas de senha, sessão, token e certificado não são consultáveis.
+- As ferramentas já devolvem só o recorte que a sua conta pode ver. Nas consultas livres (só para quem tem a chave de SQL), tabelas de senha, sessão, token e certificado não são consultáveis.
 - Cada consulta fica registrada no Alpar+, para auditoria.
 - Nenhum dado de cliente, segredo ou chave está neste repositório.
 - Como em qualquer uso do Claude, o resultado das consultas passa pela conversa com o Claude. Use em computador de trabalho e siga a política de dados do seu escritório.
